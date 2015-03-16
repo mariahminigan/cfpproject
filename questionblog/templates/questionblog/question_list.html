@@ -1,0 +1,13 @@
+{% extends 'questionblog/base.html' %}<!-- Indicates that this is an extension of myblog/base.html. In other words, this code will be inserted into the space between block content and endblock in base.html -->
+
+{% block content %} <!-- These tags correspond to the block and endblock tags in base html. "content" here could be anything, and the computer doesn't really need anything there. It's just for humans, so that we know which block we're working with, in case there are several nested within each other. -->
+		<div>
+			<h5> Click on a question to see or add answers! </h5>
+		</div>
+		{% for question in questions %} <!-- These template tags will loop through each question in the list "questions", as defined in views.py. It functions kind of like a list of all the questions.-->
+			<div> <!-- This creates a div for each question.  -->
+				<p><a href="{% url 'questionblog.views.question_comments' pk=question.pk %}">{{ question.text|linebreaks }}</a></p> <!--This posts the text of each question in its div. The entire text also serves as a link to the question_comments page for each question (pk identifies the particular question in the url by its assigned primary key. The linebreaks notation allows for linebreaks between each paragraph in the text of the questions. -->
+			</div>
+		{% endfor %}
+{% endblock content %}
+

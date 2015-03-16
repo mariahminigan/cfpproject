@@ -1,0 +1,21 @@
+{% extends 'questionblog/base.html' %}<!-- Indicates that this is an extension of myblog/base.html. In other words, this code will be inserted into the space between block content and endblock in base.html -->
+
+{% block content %} <!-- These tags correspond to the block and endblock tags in base html. "content" here could be anything, and the computer doesn't really need anything there. It's just for humans, so that we know which block we're working with, in case there are several nested within each other. -->
+	<div> 
+		<h3>{{ question.text|linebreaks }}</h3>
+	</div>
+	<div>
+		<p><b>Responses to this question:</b></p>
+	</div>
+	
+	{% for comment in comments %}
+		<div>
+			<p>{{ comment.text|linebreaks }}</p>
+		</div>
+		<div>
+			<p><em>{{ comment.created_date }}</em></p>
+		</div>
+	{% endfor %}
+	
+
+{% endblock content %}
