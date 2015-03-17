@@ -1,0 +1,47 @@
+/*Adding some visited link color, background
+ color, and spacing for the main page*/
+
+a:visited {
+	color:#663366;
+}
+
+.page-header {
+	background-color: #C2D1E0;
+    margin-top: 0;
+    padding: 15px 15px 15px 15px;
+}
+
+.question{
+	padding: 5px 15px 5px 15px;
+}
+
+.instructions{
+	padding-left: 15px;
+}
+
+/*Adding spacing for the question_comment template*/
+
+.question-display h3 {
+	padding: 5px 15px 5px 15px;
+}
+
+.comment-date {
+	font-style: italic;
+}
+
+.response-header{
+	padding-left: 15px;
+}
+
+.comment{
+	padding: 5px 15px 10px 25px;
+}
+
+.comment-form{
+	padding: 5px 15px 5px 15px;
+}
+
+.comment-form textarea, .comment-form input {
+   	min-width: 90%;
+    height: 75px;
+}

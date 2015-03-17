@@ -1,25 +1,35 @@
-{% extends 'questionblog/base.html' %}<!-- Indicates that this is an extension of myblog/base.html. In other words, this code will be inserted into the space between block content and endblock in base.html -->
+<!-- Indicates that this is an extension of myblog/base.html. In other words, this code will be inserted into the space between block content and endblock in base.html -->
+{% extends 'questionblog/base.html' %}
 
-{% block content %} <!-- These tags correspond to the block and endblock tags in base html. "content" here could be anything, and the computer doesn't really need anything there. It's just for humans, so that we know which block we're working with, in case there are several nested within each other. -->
-	<div> 
+<!-- These tags correspond to the block and endblock tags in base html. "content" here could be anything, and the computer doesn't really need anything there. It's just for humans, so that we know which block we're working with, in case there are several nested within each other. -->
+{% block content %} 
+	<div class='question-display'> 
 		<h3>{{ question.text|linebreaks }}</h3>
 	</div>
-	<div>
+	<div class='response-header'>
 		<p><h4>Responses to this question:</h4></p>
 	</div>
 	
+	
 	{% for comment in comments %}
-		<div>
-			<p>{{ comment.text|linebreaks }}</p>
-		</div>
-		<div>
-			<p><em>{{ comment.created_date }}</em></p>
+		<div class='comment'>
+			<div>
+				<p>{{ comment.text|linebreaks }}</p>
+			</div>
+			<div class='comment-date'>
+				<p>{{ comment.created_date }}</p>
+			</div>
 		</div>
 	{% endfor %}
-
-	<h4>Add new comment</h4>
-	<form method="POST" class='post-form'>{% csrf_token %}<!--Wrapping the form with an HTML form tag. Form method is POST, not GET, because we're sending something to the database rather than recieving info from the database. Then there's a template tag which makes the form secure, Django gets mad if you don't add it. -->
-		{{ form.as_p }} <!-- Displaying the form.  -->
-		<button type="submit" class="save btn btn-default">Save Comment</button> <!-- Making a basic save button.  -->
-	</form>
+	
+	<div class='comment-form'>
+		<h4>Add new comment:</h4>
+		<!--Wrapping the form with an HTML form tag. Form method is POST, not GET, because we're sending something to the database rather than recieving info from the database. Then there's a template tag which makes the form secure, Django gets mad if you don't add it. -->
+		<form method="POST" class='comment-box'>{% csrf_token %}
+			<!-- Displaying the form.  -->
+			{{ form.as_p }} 
+			<!-- Making a basic save button.  -->
+			<button type="submit" class="save btn btn-default">Save Comment</button> 
+		</form>
+	</div>
 {% endblock content %}

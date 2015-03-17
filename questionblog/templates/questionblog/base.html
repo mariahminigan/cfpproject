@@ -1,18 +1,21 @@
-<!-- These curly bracket things are template tags, and they let you use Python in HTML. This tells it to start loking for static files. -->
+<!-- These curly bracket things are template tags, and they let you use Python in HTML. This tells it to start loking for static files. In settings.py, I told it to look for those files in the static directory, which is where the CSS is stored. -->
+{% load staticfiles %}
 <html>
 	<head> 
 		<title>Mariah's Code For Progress Project</title>
 		<!-- The CSS for this page is from bootstrap! -->
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<!-- And some more CSS from my static file... -->
+		<link rel="stylesheet" href="{% static 'css/questionblog.css' %}">
 	</head>
 	<body>
-		<div>
+		<div class="page-header">
 			<!-- The / means that this link will go to the home page. -->
-			<h1><a href="/"> Mariah's Social Justice-y Questions </a></h1>
+			<h1><a href="/"> Mariah's Social Justice Questions </a></h1>
 		</div>
-
-		{% block content %}<!-- This is a block, or a template tag that will let you put HTML within this block into other templates that extend base.html. Allows for variants on the formatting of particular sections without needing to repeat any of the above. Also lets you change this basic information easily, by making changes only to this template rather than to all the templates.  -->
+		<!-- This is a block, or a template tag that will let you put HTML within this block into other templates that extend base.html. Allows for variants on the formatting of particular sections without needing to repeat any of the above. Also lets you change this basic information easily, by making changes only to this template rather than to all the templates.  -->
+		{% block content %}
         {% endblock %}
 		
 	</body>

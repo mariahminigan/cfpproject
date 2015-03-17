@@ -108,3 +108,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#MM: Tells Django where to find my static files, for CSS. 
+#CSS is static, not dynamic, because the CSS content 
+# doesn't change depending on the information requested. 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
