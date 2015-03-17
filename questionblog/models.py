@@ -19,3 +19,4 @@ class Comment(models.Model):
 	# 	self.published_date = timezone.now()
  #        self.save()
  #Took this bit out because there isn't actually a published_date here. Could just replace created_date with that. 
+

@@ -5,7 +5,7 @@
 		<h3>{{ question.text|linebreaks }}</h3>
 	</div>
 	<div>
-		<p><b>Responses to this question:</b></p>
+		<p><h4>Responses to this question:</h4></p>
 	</div>
 	
 	{% for comment in comments %}
@@ -16,6 +16,10 @@
 			<p><em>{{ comment.created_date }}</em></p>
 		</div>
 	{% endfor %}
-	
 
+	<h4>Add new comment</h4>
+	<form method="POST" class='post-form'>{% csrf_token %}<!--Wrapping the form with an HTML form tag. Form method is POST, not GET, because we're sending something to the database rather than recieving info from the database. Then there's a template tag which makes the form secure, Django gets mad if you don't add it. -->
+		{{ form.as_p }} <!-- Displaying the form.  -->
+		<button type="submit" class="save btn btn-default">Save Comment</button> <!-- Making a basic save button.  -->
+	</form>
 {% endblock content %}
